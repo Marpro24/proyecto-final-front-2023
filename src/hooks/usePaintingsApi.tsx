@@ -123,7 +123,7 @@ const usePaintingsApi = () => {
         const {
           data: { painting },
         } = await axios.patch<{ painting: PaintingStructure }>(
-          `/paintings/${id}/modify`,
+          `/paintings/${id}`,
           modifiedPainting,
         );
 

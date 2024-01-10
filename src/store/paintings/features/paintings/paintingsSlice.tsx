@@ -41,9 +41,9 @@ const paintingsSlice = createSlice({
       selectedPainting: action.payload,
     }),
     modifyPainting: (
-      currentState,
+      currentState: PaintingsStateStructure,
       action: PayloadAction<PaintingStructure>,
-    ) => ({
+    ): PaintingsStateStructure => ({
       ...currentState,
       paintings: currentState.paintings.map((painting) =>
         painting._id !== action.payload._id ? painting : action.payload,
