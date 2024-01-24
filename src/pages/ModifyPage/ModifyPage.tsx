@@ -11,13 +11,14 @@ import {
   modifyPaintingActionCreator,
 } from "../../store/paintings/features/paintings/paintingsSlice";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ModifyPage = (): React.ReactElement => {
   const { paintingId } = useParams();
   const { modifyPainting, loadSelectedPainting } = usePaintingsApi();
   const { selectedPainting } = useAppSelector((state) => state.paintingsState);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -35,6 +36,8 @@ const ModifyPage = (): React.ReactElement => {
     const updatePainting = await modifyPainting(selectedPainting._id, painting);
 
     dispatch(modifyPaintingActionCreator(updatePainting!));
+
+    navigate("/home");
   };
 
   return (
