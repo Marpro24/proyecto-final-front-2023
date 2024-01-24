@@ -10,6 +10,8 @@ const Homepage = (): React.ReactElement => {
   const { getPaintingsApi } = usePaintingsApi();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     (async () => {
       const paintings = await getPaintingsApi();
 
